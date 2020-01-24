@@ -34,20 +34,48 @@ class _ContadorPageState extends State <ContadorPage>{
           ],
         )
       ),
-      floatingActionButton: FloatingActionButton (
-        child: Icon(Icons.add),
-        onPressed: (){
-          print('Hola mundo');
-          
+      floatingActionButton: _crearBotones()
+      );
+ }
 
-          //Metodo para redibujar widget
-          setState(() {
-            _conteo++;
-          });
 
-        }),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-    );
-  }
+ 
+      Widget _crearBotones(){
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+
+          children: <Widget>[    
+              SizedBox(width: 30,),
+              FloatingActionButton(child: Icon(Icons.exposure_zero), onPressed: _reset),
+              Expanded(child: SizedBox(),),
+              FloatingActionButton(child: Icon(Icons.add), onPressed: _incrementar),
+              SizedBox(width: 5,),
+              FloatingActionButton(child: Icon(Icons.remove), onPressed: _decrementar),
+              
+          ],
+        );
+      }
+
+      void _incrementar(){
+        print('incrementar');
+        setState(() => _conteo++
+        );
+      }
+
+      void _decrementar(){
+        print('decrementar');
+        setState(() => _conteo--
+        );
+      }
+
+      void _reset(){
+        print('resetear');
+        setState(() => _conteo=0
+        );
+      }
+
+
+
+ 
 
 }
