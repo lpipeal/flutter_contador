@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 
+class ContadorPage extends StatefulWidget {
+
+@override
+  State<StatefulWidget> createState() {
+    
+    return _ContadorPageState();
+  }
+
+}
+
+class _ContadorPageState extends State <ContadorPage>{
+
+  final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
+  int _conteo = 0;
 
 
-class HomePage extends  StatelessWidget {
- // const HomePage({Key key}) : super(key: key);
-
-final TextStyle estiloTexto = new TextStyle(fontSize: 25);
-final int conteo = 10;
-  
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mi primer app'),
+        title: Text('Mi primer app Stateful'),
         centerTitle: true,
         elevation: 25,
       ),
@@ -20,8 +28,8 @@ final int conteo = 10;
         child: Column (
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Hola mundo',style: estiloTexto),
-            Text('$conteo',style: estiloTexto),
+            Text('Numero de clicks',style: _estiloTexto),
+            Text('$_conteo',style: _estiloTexto),
             
           ],
         )
@@ -30,9 +38,16 @@ final int conteo = 10;
         child: Icon(Icons.add),
         onPressed: (){
           print('Hola mundo');
-          //conteo =conteo+1;
+          
+
+          //Metodo para redibujar widget
+          setState(() {
+            _conteo++;
+          });
+
         }),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
+
 }
